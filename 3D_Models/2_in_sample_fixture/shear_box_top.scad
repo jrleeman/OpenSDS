@@ -153,16 +153,6 @@ difference()
     translate([box_x/2+soil_r+clamp_to_edge,box_y/2, 0])
     cylinder(box_z, quarter_20_tap, quarter_20_tap);
     
-    // Fillet
-    translate([box_x+end_plate_thickness, 0.25*box_y/2, box_z/2])
-    rotate([0, 0, 90])
-    fillet(fillet_r, box_z*1.1);
-    
-    // Fillet
-    translate([box_x+end_plate_thickness, box_y/2 + box_y*0.75/2, box_z/2])
-    rotate([0, 0, 180])
-    fillet(fillet_r, box_z*1.1);
-    
     // Mounting Screw for Push Retainer
     retainer_screw_depth = 0.5*in_to_mm;
     screw_z_offset = 0.25*in_to_mm;
