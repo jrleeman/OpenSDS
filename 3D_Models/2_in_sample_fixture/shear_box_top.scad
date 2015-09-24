@@ -29,7 +29,7 @@ box_z = 1 * in_to_mm;
 
 quarter_20_tap = 0.2010/2 * in_to_mm;
 ten_32_tap = 0.159/2 * in_to_mm;
-
+ten_32_free_fit = 0.2010/2 * in_to_mm;
 sample_wall_thickness = 0.25 * in_to_mm;
 
 plate_thickness = box_z-soil_z;
@@ -115,7 +115,7 @@ difference()
     
     // Clamp Screw Hole
     translate([box_x/2-soil_r-clamp_to_edge,box_y/2, box_z-clamp_screw_depth])
-    cylinder(clamp_screw_depth, quarter_20_tap, quarter_20_tap);
+    cylinder(r=ten_32_free_fit, h=clamp_screw_depth);
     
     // Fillet
     translate([quarter_20_tap*-4, box_y/2+quarter_20_tap*2, soil_z+plate_thickness/2])
@@ -149,9 +149,9 @@ difference()
     translate([box_x, box_y/2 - 0.75*box_y/2, 0])
     cube([end_plate_thickness, 0.75*box_y, soil_z+plate_thickness]);
     
-    // Hole for clamp scres
+    // Hole for clamp screw
     translate([box_x/2+soil_r+clamp_to_edge,box_y/2, 0])
-    cylinder(box_z, quarter_20_tap, quarter_20_tap);
+    cylinder(r=ten_32_free_fit, h=box_z);
     
     // Mounting Screw for Push Retainer
     retainer_screw_depth = 0.5*in_to_mm;
